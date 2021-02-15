@@ -167,11 +167,54 @@ header.sticky {
     visibility: visible;
 }
 
+@media (min-width: 768px) {
+    header {
+        background-color: white;
+        align-items: center;
+        padding: .6em 2em;
+    }
+    .header-title {
+        visibility: visible;
+    }
+    .header-nav {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+    .header-nav > ul {
+        position: static;
+        width: auto;
+        transform: none;
+        flex-direction: row;
+    }
+    .header-nav > ul > li > a {
+        font-size: .9em;
+    }
+}
+
 /* Main content wrapper */
 
 main {
-    margin-top: 50%;
+    margin-top: 45vh;
+    padding: 3em 1em 1em;
     background-color: white;
     height: 200vh;
     border-radius: 15px 15px 0 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: .25em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+p {
+    font-size: 1.2em;
+    font-weight: 500;
 }
