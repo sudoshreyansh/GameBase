@@ -223,7 +223,9 @@ header.sticky {
 /* Main content wrapper */
 
 #games-background {
-    background-color: darkgray;
+    background-image: url('./../images/background.png');
+    background-repeat: repeat;
+    background-size: 60%;
     height: 100vh;
 }
 
@@ -258,29 +260,24 @@ header.sticky {
     font-weight: 500;
 }
 
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: .4;
+}
+
 @media (min-width: 768px) {
-    main {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    #hero-content {
-        transform: none;
-        position: static;
-        flex-grow: 1;
-    }
     #games-background {
         height: 100vh;
-        width: 50vw;
-        position: relative;
-    }
-    #triangle-clip {
+        min-width: 50vw;
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
         position: absolute;
         top: 0;
-        left: 0;
-        bottom: 0;
         right: 0;
-        clip-path: polygon(0% 0%, 50% 0%, 0% 100%);
-        background-color: white;
     }
     #hero-content > h1 {
         display: none;
@@ -291,6 +288,13 @@ header.sticky {
         flex-direction: column;
         justify-content: center;
         padding-left: 5em;
+        width: 100vw;
+        height: 100vh;
+        box-sizing: border-box;
+        transform: none;
+        position: static;
+        flex-grow: 1;
+        padding-right: 45vw;
     }
     #cta-wrapper {
         justify-content: left;
@@ -299,7 +303,6 @@ header.sticky {
     #hero-content > h2 {
         font-size: 4.2em;
         margin-bottom: .4em;
-        white-space: nowrap;
         line-height: 1.1em;
     }
     #hero-content > p {
