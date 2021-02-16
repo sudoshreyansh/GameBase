@@ -1,11 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat';
 }
 
 body {
-    font-family: 'Montserrat';
-    background-color: darkgray;
+    background-color: grey;
 }
 
 @keyframes linkHover {
@@ -48,9 +48,35 @@ a:hover:after {
     animation: linkHover .5s ease-in-out;
 }
 
+button {
+    color: white;
+    background-color: black;
+    padding: .5em 1em;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: .25em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.pc-only {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .mobile-only {
         display: none;
+    }
+    .pc-only {
+        display: block;
     }
 }
 
@@ -60,7 +86,7 @@ a:hover:after {
     width: 1.5em;
     padding-top: 1em;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .hamburger--line {
@@ -114,6 +140,7 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    z-index: 2;
 }
 
 header.sticky {
@@ -128,7 +155,7 @@ header.sticky {
     height: 100vh;
     background-color: white;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
     transition: width .3s;
 }
 
@@ -171,7 +198,7 @@ header.sticky {
     header {
         background-color: white;
         align-items: center;
-        padding: .6em 2em;
+        padding: .6em 5em;
     }
     .header-title {
         visibility: visible;
@@ -195,26 +222,91 @@ header.sticky {
 
 /* Main content wrapper */
 
-main {
-    margin-top: 45vh;
+#games-background {
+    background-color: darkgray;
+    height: 100vh;
+}
+
+#hero-content {
     padding: 3em 1em 1em;
     background-color: white;
-    height: 200vh;
     border-radius: 15px 15px 0 0;
     text-align: center;
+    transform: translateY(-100%);
+    position: absolute;
+    top: 100vh;
 }
 
-h1 {
-    font-size: 3em;
-    margin-bottom: .25em;
+#cta-wrapper {
+    padding: 2.2em 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
+#cta-wrapper > button, #cta-wrapper > a {
+    font-size: 1.2em;
 }
 
-p {
+#cta-wrapper > button {
+    margin-right: 1.5em;
+}
+
+#hero-content > p {
     font-size: 1.2em;
     font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    main {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    #hero-content {
+        transform: none;
+        position: static;
+        flex-grow: 1;
+    }
+    #games-background {
+        height: 100vh;
+        width: 50vw;
+        position: relative;
+    }
+    #triangle-clip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        clip-path: polygon(0% 0%, 50% 0%, 0% 100%);
+        background-color: white;
+    }
+    #hero-content > h1 {
+        display: none;
+    }
+    #hero-content {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5em;
+    }
+    #cta-wrapper {
+        justify-content: left;
+        padding-top: 2.5em;
+    }
+    #hero-content > h2 {
+        font-size: 4.2em;
+        margin-bottom: .4em;
+        white-space: nowrap;
+        line-height: 1.1em;
+    }
+    #hero-content > p {
+        font-size: 1.8em;
+        line-height: 1.4em;
+    }
+    #cta-wrapper > button, #cta-wrapper > a {
+        font-size: 1.5em;
+    }   
 }
