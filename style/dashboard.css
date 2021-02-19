@@ -1,0 +1,27 @@
+#profile {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+#profile__icon {
+    width: 40%;
+    min-width: 150px;
+    padding-top: 40%;
+    background-color: grey;
+    border-radius: 100%;
+    margin: auto;
+}
+
+#profile__username {
+    padding: .8em 0 .3em;
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+#profile__played-time {
+    font-size: 1.2em;
+}
+
+.games-slider {
+    margin-bottom: 2.5em;
+}

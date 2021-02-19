@@ -18,6 +18,10 @@
     margin-bottom: 100px;
 }
 
+#hero-content > h3 {
+    margin-bottom: 1em;
+}
+
 #cta-wrapper {
     padding: 2.2em 0;
     display: flex;

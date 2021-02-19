@@ -2,9 +2,11 @@ document.querySelector('.hamburger').addEventListener('click', function() {
     this.parentElement.classList.toggle('nav-opened');
 });
 
-window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('sticky', window.scrollY > 0);
-});
+if ( !document.querySelector('header').classList.contains('sticky') ) {
+    window.addEventListener('scroll', () => {
+        document.querySelector('header').classList.toggle('sticky', window.scrollY > 0);
+    });
+}
 
 document.querySelectorAll('.games-slider').forEach(element => {
     let currentPos = 0;
