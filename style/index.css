@@ -1,0 +1,93 @@
+/* Main content wrapper */
+
+#games-background {
+    background-image: url('./../images/background.png');
+    background-repeat: repeat;
+    background-size: 60%;
+    height: 100vh;
+}
+
+#hero-content {
+    padding: 3em 1em 1em;
+    background-color: white;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    transform: translateY(-100%);
+    position: absolute;
+    top: 100vh;
+    margin-bottom: 100px;
+}
+
+#cta-wrapper {
+    padding: 2.2em 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#cta-wrapper > button, #cta-wrapper > a {
+    font-size: 1.2em;
+}
+
+#cta-wrapper > button {
+    margin-right: 1.5em;
+}
+
+#hero-content > p {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: .4;
+}
+
+@media (min-width: 768px) {
+    #games-background {
+        height: 100vh;
+        min-width: 50vw;
+        clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    #hero-content > h1 {
+        display: none;
+    }
+    #hero-content {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5em;
+        width: 100%;
+        height: 100vh;
+        transform: none;
+        position: static;
+        padding-right: 40%;
+        border: 0;
+    }
+    #cta-wrapper {
+        justify-content: left;
+        padding-top: 2.5em;
+    }
+    #hero-content > h3 {
+        font-size: 4.2em;
+        margin-bottom: .4em;
+        line-height: 1.1em;
+    }
+    #hero-content > p {
+        font-size: 1.8em;
+        line-height: 1.4em;
+    }
+    #cta-wrapper > button, #cta-wrapper > a {
+        font-size: 1.5em;
+    }
+}

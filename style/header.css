@@ -1,0 +1,140 @@
+/* Header Hamburger */
+
+.hamburger {
+    width: 1.5em;
+    padding-top: 1em;
+    position: relative;
+    z-index: 3;
+}
+
+.hamburger--line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: white;
+    transition: transform .3s, top .3s, width .3s;
+    transform: translateY(-50%);
+}
+
+.hamburger--line:nth-child(1) {
+    top: 0;
+}
+
+.hamburger--line:nth-child(2) {
+    top: 50%;
+}
+
+.hamburger--line:nth-child(3) {
+    top: 100%;
+}
+
+.nav-opened .hamburger--line, .sticky .hamburger--line {
+    background-color: black;
+}
+
+.nav-opened .hamburger--line:nth-child(1) {
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+.nav-opened .hamburger--line:nth-child(2) {
+    width: 0;
+}
+
+.nav-opened .hamburger--line:nth-child(3) {
+    top: 50%;
+    transform: rotate(-45deg);
+}
+
+
+/* Header */
+
+header {
+    padding: .8em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 5;
+}
+
+header.sticky {
+    background-color: white;
+}
+
+.header-nav {
+    position: fixed;
+    left: 0;
+    width: 0;
+    top: 0;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+    z-index: 2;
+    transition: width .3s;
+}
+
+.nav-opened .header-nav {
+    width: 100vw;
+}
+
+.header-nav > ul {
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-nav > ul > li {
+    padding: .4em .6em;
+}
+
+.header-nav > ul > li > a {
+    font-size: 1.5em;
+    display: block;
+}
+
+.header-title {
+    visibility: hidden;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.sticky .header-title {
+    visibility: visible;
+}
+
+@media (min-width: 768px) {
+    header {
+        background-color: white;
+        align-items: center;
+        padding: .6em 5em;
+    }
+    .header-title {
+        visibility: visible;
+    }
+    .header-nav {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+    .header-nav > ul {
+        position: static;
+        width: auto;
+        transform: none;
+        flex-direction: row;
+    }
+    .header-nav > ul > li > a {
+        font-size: .9em;
+    }
+}
