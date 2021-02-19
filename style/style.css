@@ -64,7 +64,7 @@ h2 {
     margin-bottom: .25em;
 }
 
-h4 {
+h3 {
     font-size: 2em;
     margin-bottom: 1em;
 }
@@ -80,7 +80,26 @@ h4 {
     .pc-only {
         display: block;
     }
+    h2 {
+        font-size: 3em;
+        margin-bottom: .3em;
+    }
 }
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 
 /* Header Hamburger */
 
@@ -367,7 +386,7 @@ header.sticky {
         justify-content: left;
         padding-top: 2.5em;
     }
-    #hero-content > h2 {
+    #hero-content > h3 {
         font-size: 4.2em;
         margin-bottom: .4em;
         line-height: 1.1em;
@@ -378,5 +397,12 @@ header.sticky {
     }
     #cta-wrapper > button, #cta-wrapper > a {
         font-size: 1.5em;
-    }   
+    }
+    .wrapper {
+        padding: 2.8em 5em;
+        text-align: left;
+    }
+    .games-slider__card {
+        width: 20%;
+    }
 }
