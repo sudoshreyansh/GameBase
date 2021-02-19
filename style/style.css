@@ -60,6 +60,11 @@ h1 {
 }
 
 h2 {
+    font-size: 2.6em;
+    margin-bottom: .25em;
+}
+
+h4 {
     font-size: 2em;
     margin-bottom: 1em;
 }
@@ -137,7 +142,7 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: 5;
 }
 
 header.sticky {
@@ -266,6 +271,71 @@ header.sticky {
     bottom: 0;
     background-color: black;
     opacity: .4;
+}
+
+.divider {
+    padding-top: 3em;
+}
+
+.wrapper {
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.games-slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.games-slider__cards {
+    list-style-type: none;
+    display: flex;
+    transition: transform .3s ease-out;
+}
+
+.games-slider__card {
+    width: 50%;
+    flex-shrink: 0;
+    padding: .5em;
+}
+
+.games-slider__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100%;
+    line-height: 30px;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    padding: 0;
+    text-align: center;
+    background-color: white;
+    color: black;
+    z-index: 2;
+    outline: none;
+}
+
+.games-slider__button-left {
+    left: 0;
+}
+
+.games-slider__button-right {
+    right: 0;
+}
+
+.games-card__image {
+    width: 100%;
+    padding-top: 100%;
+    background-color: blue;
+    margin-bottom: 1em;
+}
+
+.games-card__title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.35em;
 }
 
 @media (min-width: 768px) {
