@@ -6,7 +6,7 @@
 #profile__icon {
     width: 40%;
     min-width: 150px;
-    padding-top: 40%;
+    padding-top: max(40%, 150px);
     background-color: grey;
     border-radius: 100%;
     margin: auto;
@@ -24,4 +24,40 @@
 
 .games-slider {
     margin-bottom: 2.5em;
+}
+
+@media (min-width: 768px) {
+    #profile {
+        display: flex;
+        align-items: center;
+    }
+
+    #profile__icon {
+        width: 150px;
+        min-width: unset;
+        padding-top: 150px;
+    }
+    
+    #profile__details {
+        flex-grow: 1;
+        padding: 0 1em 0 2em;
+    }
+    
+    #profile__username {
+        padding-top: 0;
+        padding-bottom: .1em;
+        font-size: 2.2em;
+    }
+
+    #profile__played-time {
+        font-size: 1.4em;
+    }
+
+    #recommendations-wrapper {
+        padding-top: 1em;
+    }
+
+    .games-slider {
+        margin-bottom: 3.5em;
+    }
 }
