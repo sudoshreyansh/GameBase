@@ -28,3 +28,24 @@ document.querySelectorAll('.games-slider').forEach(element => {
         gameCardsWrapper.style.transform = `translateX(-${currentPos}px)`;
     });
 });
+
+
+document.querySelectorAll('.sign-up-trigger').forEach(element => {
+    element.addEventListener('click', event => {
+        console.log('sign-up');
+        event.preventDefault();
+        document.querySelector('main').classList.remove('log-in');
+        document.querySelector('main').classList.add('side-change');
+        setTimeout(() => document.querySelector('main').classList.add('sign-up'), 400);
+    });
+});
+
+document.querySelectorAll('.log-in-trigger').forEach(element => {
+    element.addEventListener('click', event => {
+        console.log('log-in');
+        event.preventDefault();
+        document.querySelector('main').classList.add('side-change');
+        document.querySelector('main').classList.remove('sign-up');
+        setTimeout(() => document.querySelector('main').classList.add('log-in'), 400);
+    });
+});

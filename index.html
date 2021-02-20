@@ -6,6 +6,7 @@
     <title>GameBase</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/global.css">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/index.css">
@@ -42,13 +43,55 @@
                 Play games right from your browser<br class="pc-only">without any hassle.
             </p>
             <div id="cta-wrapper">
-                <button>
+                <button class="sign-up-trigger">
                     Sign Up
                 </button>
-                <a href="">
+                <a href="" class="log-in-trigger">
                     Log In
                 </a>
             </div>
+        </div>
+        <div class="sign-up-content side-content">
+            <h1>Sign Up</h1>
+            <label for="username">Username</label>
+            <input type="text" name="username"><br>
+            <div class="sign-option with-google">
+                <div class="sign-option__image">
+                    <img src="./images/google.svg" alt="">
+                </div>
+                <div class="sign-option__text">
+                    Sign up with Google
+                </div>
+            </div>
+            <div class="sign-option with-apple">
+                <div class="sign-option__image">
+                    <img src="./images/apple.svg" alt="">
+                </div>
+                <div class="sign-option__text">
+                    Sign up with Apple
+                </div>
+            </div>
+            <button class="log-in-trigger"><i class="fas fa-arrow-left"></i> Log in instead</button>
+        </div>
+        <div class="log-in-content side-content">
+            <h1>Log In</h1>
+            <div class="sign-option with-google">
+                <div class="sign-option__image">
+                    <img src="./images/google.svg" alt="">
+                </div>
+                <div class="sign-option__text">
+                    Log in with Google
+                </div>
+            </div>
+            <div class="sign-option with-apple">
+                <div class="sign-option__image">
+                    <img src="./images/apple.svg" alt="">
+                </div>
+                <div class="sign-option__text">
+                    Log in with Apple
+                </div>
+            </div>
+            <button class="sign-up-trigger"><i class="fas fa-arrow-left"></i> Sign up instead</button>
         </div>
         <div class="divider mobile-only"></div>
         <div class="wrapper">
