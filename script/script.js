@@ -32,7 +32,6 @@ document.querySelectorAll('.games-slider').forEach(element => {
 
 document.querySelectorAll('.sign-up-trigger').forEach(element => {
     element.addEventListener('click', event => {
-        console.log('sign-up');
         event.preventDefault();
         document.querySelector('main').classList.remove('log-in');
         document.querySelector('main').classList.add('side-change');
@@ -42,7 +41,6 @@ document.querySelectorAll('.sign-up-trigger').forEach(element => {
 
 document.querySelectorAll('.log-in-trigger').forEach(element => {
     element.addEventListener('click', event => {
-        console.log('log-in');
         event.preventDefault();
         document.querySelector('main').classList.add('side-change');
         document.querySelector('main').classList.remove('sign-up');

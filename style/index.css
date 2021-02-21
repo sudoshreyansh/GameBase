@@ -1,13 +1,20 @@
 /* Main content wrapper */
 
+main {
+    position: relative;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
 #games-background {
     background-image: url('./../images/background.png');
     background-repeat: repeat;
     background-size: 60%;
     height: 100vh;
+    position: relative;
 }
 
-#hero-content {
+#hero-content, .side-content {
     padding: 3em 1em 1em;
     background-color: white;
     border-radius: 15px 15px 0 0;
@@ -15,7 +22,11 @@
     transform: translateY(-100%);
     position: absolute;
     top: 100vh;
-    margin-bottom: 100px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    transition: transform .6s .3s;
+    z-index: 1;
 }
 
 #hero-content > h3 {
@@ -53,12 +64,98 @@
     opacity: .4;
 }
 
-.side-change .wrapper, .side-change .divider {
-    display: none;
+
+.side-content > h1 {
+    margin-bottom: .75em;
+}
+
+label {
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-bottom: .5em;
+    display: block;
+    text-align: left;
+}
+
+input {
+    border: 0;
+    background-color: lightgray;
+    font-size: 1.4em;
+    padding: .5em;
+    margin-bottom: .6em;
+    width: 100%;
+}
+
+.side-content {
+    transform: none;
+    z-index: 0;
+    padding: 2em 1em;
+}
+
+.sign-option {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: .5em 0;
+    border-radius: 5px;
+}
+
+.with-google {
+    background-color: white;
+    color: rgba(0,0,0,.54);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
+}
+
+.with-apple {
+    background-color: black;
+    color: white;
+    padding-left: .3em;
+    margin-bottom: 2em;
+}
+
+.with-google .sign-option__image {
+    width: 2.6em;
+}
+
+.with-apple .sign-option__image {
+    width: 2em;
+    margin-right: .3em;
+}
+
+.sign-option__image img {
+    width: 100%;
+}
+
+.sign-option__text {
+    flex-grow: 1;
+    font-family: 'Roboto';
+}
+
+.side-content button {
+    font-size: 1.1em;
+    padding: .6em 1em;
+}
+
+.side-content button .fas {
+    margin-right: .4em;
 }
 
 .side-change #hero-content {
-    margin-bottom: 0;
+    transform: translateY(0);
+    z-index: 0;
+}
+
+.sign-up .sign-up-content {
+    transform: translateY(-100%);
+    z-index: 1;
+}
+
+.log-in .log-in-content {
+    transform: translateY(-100%);
+    z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -122,8 +219,9 @@
     }
 
     .side-content {
-        position: absolute;
+        text-align: left;
         right: 0;
+        left: auto;
         width: 52vw;
         top: 50%;
         transform: translate(5em, -50%);
@@ -147,74 +245,15 @@
         z-index: 1;
     }
 
-    .side-content > h1 {
-        margin-bottom: .5em;
-    }
-
-    label {
-        font-size: 1.4em;
-        font-weight: 500;
-        margin-bottom: .5em;
-        display: block;
-    }
-
     input {
-        border: 0;
-        background-color: lightgray;
-        font-size: 1.4em;
-        padding: .5em;
-        margin-bottom: .6em;
         width: 50%;
     }
 
+    .side-content > h1 {
+        margin-bottom: .75em;
+    }
+
     .sign-option {
-        display: flex;
-        align-items: center;
-        padding: 0;
         width: 60%;
-        font-size: 1.2em;
-        cursor: pointer;
-        margin: .5em 0;
-        border-radius: 5px;
-    }
-
-    .with-google {
-        background-color: white;
-        color: rgba(0,0,0,.54);
-        box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
-    }
-
-    .with-apple {
-        background-color: black;
-        color: white;
-        padding-left: .3em;
-        margin-bottom: 2em;
-    }
-
-    .with-google .sign-option__image {
-        width: 2.6em;
-    }
-
-    .with-apple .sign-option__image {
-        width: 2em;
-        margin-right: .3em;
-    }
-
-    .sign-option__image img {
-        width: 100%;
-    }
-
-    .sign-option__text {
-        flex-grow: 1;
-        font-family: 'Roboto';
-    }
-
-    .side-content button {
-        font-size: 1.1em;
-        padding: .6em 1em;
-    }
-
-    .side-content button .fas {
-        margin-right: .4em;
     }
 }
