@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/global.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/admin.css">
+</head>
+<body>
+    <header class="sticky">
+        <div class="header-title">
+            GameBase
+        </div>
+        <div class="hamburger mobile-only">
+            <div class="hamburger--line"></div>
+            <div class="hamburger--line"></div>
+            <div class="hamburger--line"></div>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li>
+                    <a href="">Games</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="divider"></div>
+        <div class="wrapper">
+            <h1>Admin Panel</h1>
+            <div class="divider-small"></div>
+            <details>
+                <summary>Add New Game</summary>
+                <form action="">
+                    <label for="game-name">Name:</label><br>
+                    <input type="text" id="game-name"><br>
+                    <label for="game-description">Description:</label><br>
+                    <input type="text" id="game-description"><br>
+                    <label for="icon">Game Icon:</label>
+                    <label for="icon-upload" class="file-upload-button">Upload File</label>
+                    <input type="file" name="icon" id="icon-upload">
+                    <input type="submit" value="Add Game">
+                </form>
+            </details>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/4e16efa13b.js" crossorigin="anonymous"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>

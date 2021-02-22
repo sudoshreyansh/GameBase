@@ -1,0 +1,41 @@
+#search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-wrapper input[type="search"] {
+    padding: .5em 1em;
+    font-size: .9em;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: solid 1px black;
+    outline: 0 !important;
+}
+
+#search-wrapper button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: .9em;
+    border: solid 1px black;
+    outline: 0 !important;
+}
+
+.games-slider {
+    margin-bottom: 2em;
+}
+
+@media (min-width: 768px) {
+    #search-wrapper input[type="search"] {
+        width: 60%;
+        padding: .8em 2em;
+    }
+
+    #search-wrapper button {
+        padding: .8em 2em;
+    }
+
+    .games-slider {
+        margin-bottom: 4em;
+    }
+}

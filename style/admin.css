@@ -1,0 +1,58 @@
+summary {
+    outline: 0 !important;
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    color: transparent;
+}
+
+summary:before {
+    content: "+";
+}
+
+details {
+    text-align: left;
+}
+
+.file-upload-button {
+    background-color: black;
+    color: white;
+    padding: .5em 1em;
+    margin: .5em 0 .5em 1em;
+    display: inline-block;
+}
+
+input {
+    margin: .5em 0 1em;
+    padding: .5em 1em;
+    width: 100%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: .8em 1em;
+    border: 0;
+    margin-top: 1.5em;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    input {
+        width: 50%;
+    }
+
+    input[type="submit"] {
+        padding: 1em;
+        width: 150px;
+    }
+}
