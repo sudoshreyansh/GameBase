@@ -53,9 +53,19 @@
         </div>
         <div class="sign-up-content side-content">
             <h1>Sign Up</h1>
+            <div class="error-text" id="sign-up-error-text">
+            </div>
             <label for="username">Username:</label>
-            <input type="text" name="username"><br>
-            <div class="sign-option with-google">
+            <input type="text" name="username" id="username" autocomplete="off">
+            <span id="username-avail">
+                <i class="fas fa-spinner"></i>
+                <i class="fas fa-check"></i>
+                <i class="fas fa-times"></i>
+            </span>
+            <br>
+            <div class="error-text" id="username-error-text">
+            </div>
+            <div class="sign-option with-google" id="sign-up-google">
                 <div class="sign-option__image">
                     <img src="./images/google.svg" alt="">
                 </div>
@@ -63,19 +73,21 @@
                     Sign up with Google
                 </div>
             </div>
-            <div class="sign-option with-apple">
+            <div class="sign-option with-facebook" id="sign-up-facebook">
                 <div class="sign-option__image">
-                    <img src="./images/apple.svg" alt="">
+                    <img src="./images/facebook.png" alt="">
                 </div>
                 <div class="sign-option__text">
-                    Sign up with Apple
+                    Sign up with Facebook
                 </div>
             </div>
             <button class="log-in-trigger"><i class="fas fa-arrow-left"></i> Log in instead</button>
         </div>
         <div class="log-in-content side-content">
             <h1>Log In</h1>
-            <div class="sign-option with-google">
+            <div class="error-text" id="log-in-error-text">
+            </div>
+            <div class="sign-option with-google" id="log-in-google">
                 <div class="sign-option__image">
                     <img src="./images/google.svg" alt="">
                 </div>
@@ -83,18 +95,26 @@
                     Log in with Google
                 </div>
             </div>
-            <div class="sign-option with-apple">
+            <div class="sign-option with-facebook" id="log-in-facebook">
                 <div class="sign-option__image">
-                    <img src="./images/apple.svg" alt="">
+                    <img src="./images/facebook.png" alt="">
                 </div>
                 <div class="sign-option__text">
-                    Log in with Apple
+                    Log in with Facebook
                 </div>
             </div>
             <button class="sign-up-trigger"><i class="fas fa-arrow-left"></i> Sign up instead</button>
         </div>
     </main>
     <script src="https://kit.fontawesome.com/4e16efa13b.js" crossorigin="anonymous"></script>
-    <script src="script/script.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="script/global.js"></script>
+    <script src="script/auth.js"></script>
 </body>
 </html>

@@ -29,6 +29,10 @@ main {
     z-index: 1;
 }
 
+.no-transition #hero-content, .no-transition .side-content {
+    transition: none;
+}
+
 #hero-content > h3 {
     margin-bottom: 1em;
 }
@@ -109,8 +113,8 @@ input {
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.20);
 }
 
-.with-apple {
-    background-color: black;
+.with-facebook {
+    background-color: #1a77f2;
     color: white;
     padding-left: .3em;
     margin-bottom: 2em;
@@ -120,9 +124,10 @@ input {
     width: 2.6em;
 }
 
-.with-apple .sign-option__image {
+.with-facebook .sign-option__image {
     width: 2em;
     margin-right: .3em;
+    padding: .3em;
 }
 
 .sign-option__image img {
@@ -158,6 +163,27 @@ input {
     z-index: 1;
 }
 
+#username-avail {
+    display: inline-block;
+    padding: 0 .5em;
+}
+
+#username-avail * {
+    display: none;
+}
+
+#username-avail.loading .fa-spinner {
+    display: inline-block;
+}
+
+#username-avail.available .fa-check {
+    display: inline;
+}
+
+#username-avail.unavailable .fa-times {
+    display: inline;
+}
+
 @media (min-width: 768px) {
     #games-background {
         height: 100vh;
@@ -168,6 +194,10 @@ input {
         right: 0;
         transition: clip-path .8s, right .8s;
         z-index: 2;
+    }
+
+    .no-transition #games-background {
+        transition: none;
     }
 
     .side-change #games-background {
@@ -192,6 +222,10 @@ input {
         padding-right: 40%;
         border: 0;
         transition: visibility .45s;
+    }
+
+    .no-transition #hero-content {
+        transition: none;
     }
 
     .side-change #hero-content {
@@ -231,6 +265,10 @@ input {
         max-height: 100vh;
         overflow-y: scroll;
         z-index: -1;
+    }
+
+    .no-transition .side-content {
+        transition: none;
     }
 
     .sign-up .sign-up-content {

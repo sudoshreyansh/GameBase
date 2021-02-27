@@ -1,0 +1,20 @@
+{
+  "name": "gamebase",
+  "version": "1.0.0",
+  "description": "GameBase, a in-browser gaming website project for WoC 3.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "firebase serve --only hosting"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudoshreyansh/GameBase.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudoshreyansh/GameBase/issues"
+  },
+  "homepage": "https://github.com/sudoshreyansh/GameBase#readme"
+}
