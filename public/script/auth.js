@@ -142,6 +142,7 @@ async function signUpHandler(result) {
         username: signUpDetails.username,
         admin: false
     });
+    window.location.replace('/dashboard');
 }
 
 async function logInHandler(result) {
@@ -154,8 +155,7 @@ async function logInHandler(result) {
         signOut();
         return;
     }
-    // Successful log in
-    console.log('logged');
+    window.location.replace('/dashboard');
 }
 
 document.querySelectorAll('.sign-up-trigger').forEach(element => {
