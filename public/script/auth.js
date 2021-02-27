@@ -126,9 +126,6 @@ async function signUpHandler(result) {
     let signUpDetails = getSignState();
     setSignState(emptyState);
 
-    showSideContent(signUpState, false);
-    document.getElementById('username').value = signUpDetails.username;
-
     let uid = result.user.uid;
     if ( await checkForAccount(uid) ) {
         setErrorText('sign-up', 'This account already exists. Please login instead');
@@ -149,7 +146,6 @@ async function signUpHandler(result) {
 }
 
 async function logInHandler(result) {
-    showSideContent(logInState, false);
     setSignState(emptyState);
 
     let uid = result.user.uid;
@@ -159,6 +155,17 @@ async function logInHandler(result) {
         return;
     }
     window.location.replace('/dashboard');
+}
+
+function openSideContent() {
+    let signState = getSignState();
+    
+    if ( signState.state === signUpState ) {
+        showSideContent(signUpState, false);
+        document.getElementById('username').value = signUpDetails.username;
+    } else if ( signState.state === logInState ) {
+        showSideContent(logInState, false);
+    }
 }
 
 document.querySelectorAll('.sign-up-trigger').forEach(element => {
@@ -192,3 +199,5 @@ firebase.auth().getRedirectResult().then(result => {
 
 document.getElementById('username').addEventListener('keyup', debounce(validateUsernameFromField, 500));
 document.getElementById('username').addEventListener('change', validateUsernameFromField);
+
+openSideContent();
