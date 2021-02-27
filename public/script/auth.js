@@ -79,7 +79,10 @@ function googleSignIn() {
     firebase.auth().signInWithRedirect(provider);
 }
 
-function facebookSignIn() {}
+function facebookSignIn() {
+    let provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+}
 
 function signOut() {
     firebase.auth().signOut();
