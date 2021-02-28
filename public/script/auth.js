@@ -1,3 +1,11 @@
+/**
+ * TODO:
+ * Prevent unnecessary checking of same usernames multiple times
+ * Make errors better
+ * Error handling for firebase auth
+ *  
+ */
+
 const signUpState = 1;
 const logInState = 0;
 const emptyState = -1;
@@ -15,6 +23,10 @@ function debounce(callback, delay) {
 
 function setErrorText(fieldName, errorText) {
     document.getElementById(`${fieldName}-error-text`).innerText = errorText;
+}
+
+function getErrorText(fieldName) {
+    return document.getElementById(`${fieldName}-error-text`).innerText;
 }
 
 function showSideContent(signState, transition = true) {
@@ -111,6 +123,9 @@ function setSignState(signState, username = '') {
 async function signUp(signInMethod) {
     let username = document.getElementById('username').value;
     if ( !(await validateUsername(username)) ) {
+        if ( getErrorText('username') === '' ) {
+            setErrorText('username', 'This username is taken');
+        }
         return;
     }
     setSignState(signUpState, username);
@@ -130,11 +145,15 @@ async function signUpHandler(result) {
     if ( await checkForAccount(uid) ) {
         setErrorText('sign-up', 'This account already exists. Please login instead');
         signOut();
+        removeLoader();
         return;
     }
     if ( !(await validateUsername(signUpDetails.username)) ) {
-        setErrorText('username', 'This username is already taken.');
+        if ( getErrorText('username') === '' ) {
+            setErrorText('username', 'This username is taken');
+        }
         signOut();
+        removeLoader();
         return;
     }
 
@@ -142,6 +161,7 @@ async function signUpHandler(result) {
         username: signUpDetails.username,
         admin: false
     });
+    setLoaderText('Redirecting to dashboard');
     window.location.replace('/dashboard');
 }
 
@@ -152,18 +172,31 @@ async function logInHandler(result) {
     if ( !(await checkForAccount(uid)) ) {
         setErrorText('log-in', 'No account exists. Please sign up');
         signOut();
+        removeLoader();
         return;
     }
+    setLoaderText('Redirecting to dashboard');
     window.location.replace('/dashboard');
 }
 
 function openSideContent() {
     let signState = getSignState();
-    
+
+    if ( !signState || signState.state === emptyState ) {
+        if ( document.readyState === 'complete' ) {
+            removeLoader();
+        } else {
+            window.addEventListener('load', removeLoader);
+        }
+        return;
+    }
+
     if ( signState.state === signUpState ) {
+        setLoaderText('Signing You Up');
         showSideContent(signUpState, false);
-        document.getElementById('username').value = signUpDetails.username;
+        document.getElementById('username').value = signState.username;
     } else if ( signState.state === logInState ) {
+        setLoaderText('Logging In');
         showSideContent(logInState, false);
     }
 }
@@ -188,7 +221,6 @@ document.getElementById('log-in-google').addEventListener('click', () => logIn(g
 document.getElementById('log-in-facebook').addEventListener('click', () => logIn(facebookSignIn));
 
 firebase.auth().getRedirectResult().then(result => {
-    console.log('redirected');
     let signState = getSignState();
     if ( signState.state === signUpState ) {
         signUpHandler(result);

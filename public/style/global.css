@@ -220,6 +220,7 @@ h3 {
 .loader-wrapper {
     display: flex;
     justify-content: space-between;
+    width: 100px;
 }
 
 
@@ -237,27 +238,45 @@ h3 {
 
 .loader--first, .loader--second, .loader--third {
     background-color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 20px;
-    width: 20px;
+    padding-top: 25%;
+    width: 25%;
     border-radius: 100%;
-    animation: loadingAnimation .6s linear infinite;
+    animation: loadingAnimation .9s linear infinite;
     opacity: 0;
 }
 
-.loader--first {
-    transform: translate(-50%, -50%);
-    animation-delay: .4s;
+.loader--third {
+    animation-delay: .6s;
 }
 
 .loader--second {
-    transform: translate(-175%, -50%);
-    animation-delay: .2s;
+    animation-delay: .3s;
 }
 
-.loader--third {
-    transform: translate(75%, -50%);
 
+/* Loading */
+
+#loading-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: clip-path .5s;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#loading-wrapper.loaded {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+#loading-wrapper p {
+    font-size: 1.2em;
 }
