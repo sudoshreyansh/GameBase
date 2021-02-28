@@ -86,7 +86,7 @@ input {
     background-color: lightgray;
     font-size: 1.4em;
     padding: .5em;
-    margin-bottom: .6em;
+    margin-bottom: .4em;
     width: 100%;
 }
 
@@ -182,6 +182,18 @@ input {
 
 #username-avail.unavailable .fa-times {
     display: inline;
+}
+
+.error-text {
+    color: red;
+}
+
+#username-error-text {
+    margin-bottom: .8em;
+}
+
+#log-in-error-text, #sign-up-error-text {
+    margin-top: .4em;
 }
 
 @media (min-width: 768px) {

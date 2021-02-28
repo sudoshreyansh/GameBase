@@ -1,7 +1,6 @@
 /**
  * TODO:
  * Prevent unnecessary checking of same usernames multiple times
- * Make errors better
  * Error handling for firebase auth
  *  
  */
