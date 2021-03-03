@@ -1,3 +1,6 @@
+var database = firebase.firestore();
+var usersCollection = database.collection('users');
+
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
 });
@@ -35,6 +38,12 @@ document.querySelectorAll(".games-slider").forEach((element) => {
     });
 });
 
+function displayLoader() {
+  let loadingWrapper = document.getElementById("loading-wrapper");
+  loadingWrapper.classList.remove("loaded");
+  loadingWrapper.style.display = "block";
+}
+
 function removeLoader() {
   let loadingWrapper = document.getElementById("loading-wrapper");
   loadingWrapper.classList.add("loaded");
@@ -44,3 +53,32 @@ function removeLoader() {
 function setLoaderText(text) {
   document.querySelector('#loading-wrapper p').innerText = text;
 }
+
+function getFromDatabase(reference) {
+  return new Promise(resolve => {
+      reference.get().then(snapshot => {
+          resolve(snapshot);
+      });
+  });
+}
+
+document.getElementById('logout').addEventListener('click', function(event) {
+  event.preventDefault();
+  firebase.auth().signOut();
+  if ( document.querySelector('body').classList.contains('logged-in-only') ) {
+    window.location.assign('/');
+  } else {
+    window.location.reload();
+  }
+});
+
+firebase.auth().onAuthStateChanged(user => {
+  if ( user ) {
+    document.querySelector('body').classList.add('logged-in');
+    if ( authCallback ) {
+      authCallback(user);
+    }
+  } else if ( document.querySelector('body').classList.contains('logged-in-only') ) {
+    window.location.assign('/');
+  }
+});

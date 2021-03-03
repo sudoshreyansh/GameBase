@@ -49,7 +49,7 @@ a:hover:after {
     animation: linkHover .5s ease-in-out;
 }
 
-button {
+button, a.primary-button {
     color: white;
     background-color: black;
     padding: .5em 1em;

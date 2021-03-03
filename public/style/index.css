@@ -264,6 +264,19 @@ input {
         font-size: 1.5em;
     }
 
+    .logged-in #cta-wrapper .sign-up-trigger,
+    .logged-in #cta-wrapper .log-in-trigger {
+        display: none;
+    }
+
+    #dashboard-trigger {
+        display: none;
+    }
+
+    .logged-in #dashboard-trigger {
+        display: inline-block;
+    }
+
     .side-content {
         text-align: left;
         right: 0;

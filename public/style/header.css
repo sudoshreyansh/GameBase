@@ -113,6 +113,14 @@ header.sticky {
     visibility: visible;
 }
 
+#logout {
+    display: none;
+}
+
+.logged-in #logout {
+    display: block;
+}
+
 @media (min-width: 768px) {
     header {
         background-color: white;

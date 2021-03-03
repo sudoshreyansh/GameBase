@@ -9,9 +9,6 @@ const signUpState = 1;
 const logInState = 0;
 const emptyState = -1;
 
-var database = firebase.firestore();
-var usersCollection = database.collection('users');
-
 function debounce(callback, delay) {
     let timerId;
     return function () {
@@ -97,14 +94,6 @@ function facebookSignIn() {
 
 function signOut() {
     firebase.auth().signOut();
-}
-
-function getFromDatabase(reference) {
-    return new Promise(resolve => {
-        reference.get().then(snapshot => {
-            resolve(snapshot);
-        });
-    });
 }
 
 function getSignState() {
@@ -221,6 +210,7 @@ document.getElementById('log-in-facebook').addEventListener('click', () => logIn
 
 firebase.auth().getRedirectResult().then(result => {
     let signState = getSignState();
+    openSideContent();
     if ( signState.state === signUpState ) {
         signUpHandler(result);
     } else if ( signState.state === logInState ) {
@@ -230,5 +220,3 @@ firebase.auth().getRedirectResult().then(result => {
 
 document.getElementById('username').addEventListener('keyup', debounce(validateUsernameFromField, 500));
 document.getElementById('username').addEventListener('change', validateUsernameFromField);
-
-openSideContent();
