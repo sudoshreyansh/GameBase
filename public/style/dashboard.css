@@ -3,6 +3,10 @@
     padding-bottom: 3em;
 }
 
+#profile:not(.loaded), #history:not(.loaded) {
+    display: none;
+}
+
 #profile__icon {
     width: 40%;
     min-width: 150px;
