@@ -7,9 +7,6 @@ function setProfile(username) {
     displayProfile();
 }
 
-async function authCallback(user) {
-    let uid = user.uid;
-    let documentSnapshot = await getFromDatabase(usersCollection.doc(uid));
-    let userData = documentSnapshot.data();
+async function authCallback(userData) {
     setProfile(userData.username);
 }

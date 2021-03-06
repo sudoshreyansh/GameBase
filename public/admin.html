@@ -3,14 +3,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Admin Panel</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/global.css">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/admin.css">
 </head>
-<body>
+<body class="logged-in-only admin-only">
     <header class="sticky">
         <div class="header-title">
             GameBase
@@ -28,6 +28,12 @@
                 <li>
                     <a href="">Games</a>
                 </li>
+                <li>
+                    <a href="" id="admin">Admin</a>
+                </li>
+                <li>
+                    <a href="" id="logout">Logout</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -38,20 +44,38 @@
             <div class="divider-small"></div>
             <details>
                 <summary>Add New Game</summary>
+                <div id="success">Successfully added.</div>
                 <form action="">
                     <label for="game-name">Name:</label><br>
-                    <input type="text" id="game-name"><br>
+                    <input type="text" id="game-name" autocomplete="off" required><br>
                     <label for="game-description">Description:</label><br>
-                    <input type="text" id="game-description"><br>
+                    <input type="text" id="game-description" required><br>
                     <label for="icon">Game Icon:</label>
-                    <label for="icon-upload" class="file-upload-button">Upload File</label>
-                    <input type="file" name="icon" id="icon-upload">
+                    <label for="icon-upload" class="file-upload-button" data-filename="No file chosen"></label>
+                    <input type="file" id="icon-upload" accept=".jpg, .jpeg, .png" required>
                     <input type="submit" value="Add Game">
+                    <div id="loading-wrapper">
+                        <div class="loader-wrapper">
+                            <div class="loader--first"></div>
+                            <div class="loader--second"></div>
+                            <div class="loader--third"></div>
+                        </div>
+                        <div class="divider-small"></div>
+                        <p></p>
+                    </div>
                 </form>
             </details>
         </div>
     </main>
     <script src="https://kit.fontawesome.com/4e16efa13b.js" crossorigin="anonymous"></script>
+    <script src="/__/firebase/6.4.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
     <script src="script/global.js"></script>
+    <script src="script/admin.js"></script>
 </body>
 </html>

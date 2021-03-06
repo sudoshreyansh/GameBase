@@ -19,12 +19,17 @@ details {
     text-align: left;
 }
 
-.file-upload-button {
+.file-upload-button:before {
+    content: "Upload File";
     background-color: black;
     color: white;
     padding: .5em 1em;
-    margin: .5em 0 .5em 1em;
+    margin: .5em .5em .5em 1em;
     display: inline-block;
+}
+
+.file-upload-button:after {
+    content: attr(data-filename);
 }
 
 input {
@@ -46,13 +51,38 @@ input[type="submit"] {
     display: block;
 }
 
+#success {
+    display: none;
+    color: green;
+    padding: 1em;
+    border: solid 1px green;
+    margin-bottom: 1em;
+}
+
+form {
+    position: relative;
+}
+
+#loading-wrapper {
+    background-color: rgba(255, 255, 255, .4);
+    display: none;
+}
+
+form.loading #loading-wrapper {
+    display: flex;
+}
+
 @media (min-width: 768px) {
-    input {
-        width: 50%;
+    form {
+        width: 45%;
     }
 
     input[type="submit"] {
         padding: 1em;
         width: 150px;
+    }
+
+    #success {
+        width: 50%;
     }
 }

@@ -113,11 +113,11 @@ header.sticky {
     visibility: visible;
 }
 
-#logout {
+#logout, #admin {
     display: none;
 }
 
-.logged-in #logout {
+.logged-in #logout, .logged-in.admin #admin {
     display: block;
 }
 

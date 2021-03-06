@@ -1,5 +1,7 @@
 var database = firebase.firestore();
+var storage = firebase.storage();
 var usersCollection = database.collection('users');
+var gamesCollection = database.collection('games');
 
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
@@ -62,6 +64,11 @@ function getFromDatabase(reference) {
   });
 }
 
+async function getUserDetails(uid) {
+  let documentSnapshot = await getFromDatabase(usersCollection.doc(uid));
+   return documentSnapshot.data();
+}
+
 document.getElementById('logout').addEventListener('click', function(event) {
   event.preventDefault();
   firebase.auth().signOut();
@@ -72,13 +79,30 @@ document.getElementById('logout').addEventListener('click', function(event) {
   }
 });
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(async user => {
   if ( user ) {
-    document.querySelector('body').classList.add('logged-in');
-    if ( authCallback ) {
-      authCallback(user);
+    let userData = await getUserDetails(user.uid);
+    
+    if ( userData ) {
+      document.querySelector('body').classList.add('logged-in');
+
+      if ( userData.admin ) {
+        document.querySelector('body').classList.add('admin');
+
+      } else if ( document.querySelector('body').classList.contains('admin-only') ) {
+        window.location.assign('/dashboard');
+
+      }
+
+      if ( window.authCallback ) {
+        authCallback(userData);
+      }
+
+      return;
     }
-  } else if ( document.querySelector('body').classList.contains('logged-in-only') ) {
+  }
+  
+  if ( document.querySelector('body').classList.contains('logged-in-only') ) {
     window.location.assign('/');
   }
 });
