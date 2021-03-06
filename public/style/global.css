@@ -141,6 +141,10 @@ h3 {
     transition: transform .3s ease-out;
 }
 
+.grid.games-slider .games-slider__cards {
+    flex-wrap: wrap;
+}
+
 .games-slider__card {
     width: 50%;
     flex-shrink: 0;
@@ -163,6 +167,10 @@ h3 {
     color: black;
     z-index: 2;
     outline: none;
+}
+
+.grid.games-slider .games-slider__button {
+    display: none;
 }
 
 .games-slider__button-left {
