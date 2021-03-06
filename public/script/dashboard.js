@@ -9,4 +9,14 @@ function setProfile(username) {
 
 async function authCallback(userData) {
     setProfile(userData.username);
+    let querySnapshot = await getFromDatabase(gamesCollection);
+    let games = [];
+    querySnapshot.forEach(snapshot => {
+        if ( snapshot.exists ) {
+            games.push(snapshot.data());
+        }
+    });
+    document.querySelector('#history .games-slider__cards').innerHTML = generateSliderContent(games);
+    document.querySelector('#history').classList.add('loaded');
+    initSlider(document.querySelector('#history .games-slider'));
 }

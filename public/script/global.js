@@ -15,7 +15,7 @@ if (!document.querySelector("header").classList.contains("sticky")) {
   });
 }
 
-document.querySelectorAll(".games-slider").forEach((element) => {
+function initSlider (element) {
   let currentPos = 0;
   let gameCardsWrapper = element.querySelector(".games-slider__cards");
   let gameCards = element.querySelectorAll(".games-slider__card");
@@ -38,7 +38,19 @@ document.querySelectorAll(".games-slider").forEach((element) => {
       currentPos = newPos > scrollWidth ? scrollWidth : newPos;
       gameCardsWrapper.style.transform = `translateX(-${currentPos}px)`;
     });
-});
+}
+
+function generateSliderContent(gamesArray) {
+  return gamesArray.reduce((accumulator, currentGame) => {
+    return accumulator + `
+    <li class="games-slider__card">
+      <div class="games-card__image" style="background-image: url('${currentGame.icon}')"></div>
+      <div class="games-card__title">
+          ${currentGame.name}
+      </div>
+    </li>`;
+  }, '');
+}
 
 function displayLoader() {
   let loadingWrapper = document.getElementById("loading-wrapper");

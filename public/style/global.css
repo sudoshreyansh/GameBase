@@ -176,7 +176,8 @@ h3 {
 .games-card__image {
     width: 100%;
     padding-top: 100%;
-    background-color: blue;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-bottom: 1em;
 }
 
