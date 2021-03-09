@@ -40,8 +40,16 @@
     <main>
         <div class="divider"></div>
         <div id="search-wrapper" class="wrapper">
-            <input type="search" name="" id="" placeholder="Type here to search">
-            <button>Search</button>
+            <input type="search" name="" id="search-input" placeholder="Type here to search">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="search-results" class="wrapper">
+            <div class="games-slider grid">
+                <button class="games-slider__button games-slider__button-left"><i class="fas fa-angle-left"></i></button>
+                <button class="games-slider__button games-slider__button-right"><i class="fas fa-angle-right"></i></button>
+                <ul class="games-slider__cards">
+                </ul>
+            </div>
         </div>
         <div class="wrapper" id="recommendations-wrapper">
             <h3>Top Games</h3>
@@ -109,6 +117,14 @@
         </div>
     </main>
     <script src="https://kit.fontawesome.com/4e16efa13b.js" crossorigin="anonymous"></script>
-    <script src="script/global.jss"></script>
+    <script src="/__/firebase/6.4.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="script/global.js"></script>
+    <script src="script/browse.js"></script>
 </body>
 </html>

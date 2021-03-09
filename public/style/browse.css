@@ -25,6 +25,10 @@
     margin-bottom: 2em;
 }
 
+#recommendations-wrapper, main:not(.show-search-results) #search-results {
+    display: none;
+}
+
 @media (min-width: 768px) {
     #search-wrapper input[type="search"] {
         width: 60%;

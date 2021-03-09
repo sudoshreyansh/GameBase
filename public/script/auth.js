@@ -145,7 +145,7 @@ async function signUpHandler(result) {
         return;
     }
 
-    usersCollection.doc(uid).set({
+    await usersCollection.doc(uid).set({
         username: signUpDetails.username,
         admin: false
     });
