@@ -13,7 +13,7 @@ async function authCallback(userData) {
     let games = [];
     querySnapshot.forEach(snapshot => {
         if ( snapshot.exists ) {
-            games.push(snapshot.data());
+            games.push({...snapshot.data(), id: snapshot.id });
         }
     });
     document.querySelector('#history .games-slider__cards').innerHTML = generateSliderContent(games);

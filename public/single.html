@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Game</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/header.css">
+    <link rel="stylesheet" href="/style/single.css">
+</head>
+<body class="logged-in-only">
+    <header class="sticky">
+        <div class="header-title">
+            GameBase
+        </div>
+        <div class="hamburger mobile-only">
+            <div class="hamburger--line"></div>
+            <div class="hamburger--line"></div>
+            <div class="hamburger--line"></div>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/browse">Games</a>
+                </li>
+                <li>
+                    <a href="/admin" id="admin">Admin</a>
+                </li>
+                <li>
+                    <a href="/" id="logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="divider"></div>
+        <div class="wrapper">
+            <div id="game-thumbnail"></div>
+            <div id="game-title"></div>
+            <div id="game-description"></div>
+            <div id="game-iframe-wrapper">
+                <div id="game-iframe">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/4e16efa13b.js" crossorigin="anonymous"></script>
+    <script src="/__/firebase/6.4.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.4.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="/script/global.js"></script>
+    <script src="/script/single.js"></script>
+</body>
+</html>

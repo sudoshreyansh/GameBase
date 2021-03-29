@@ -10,6 +10,10 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "rewrites": [ {
+      "source": "/game/**",
+      "destination": "/single.html"
+    } ],
     "cleanUrls": true
   },
   "storage": {

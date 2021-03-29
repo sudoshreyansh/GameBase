@@ -44,10 +44,12 @@ function generateSliderContent(gamesArray) {
   return gamesArray.reduce((accumulator, currentGame) => {
     return accumulator + `
     <li class="games-slider__card">
-      <div class="games-card__image" style="background-image: url('${currentGame.icon}')"></div>
-      <div class="games-card__title">
-          ${currentGame.name}
-      </div>
+      <a href="/game/${currentGame.id}">
+        <div class="games-card__image" style="background-image: url('${currentGame.icon}')"></div>
+        <div class="games-card__title">
+            ${currentGame.name}
+        </div>
+      </a>
     </li>`;
   }, '');
 }

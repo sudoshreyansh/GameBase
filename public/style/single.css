@@ -1,0 +1,32 @@
+#game-thumbnail {
+    background-color: grey;
+    width: 30%;
+    padding-top: min(150px, 30%);
+    float: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 1em;
+}
+
+#game-title {
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: .4em;
+}
+
+#game-title, #game-description {
+    text-align: left;
+}
+
+#game-iframe-wrapper {
+    width: 100%;
+    height: 50%;
+    clear: both;
+    padding-top: 1em;
+}
+
+#game-iframe {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+}
