@@ -8,12 +8,16 @@
 }
 
 #profile__icon {
+    display: block;
     width: 40%;
     min-width: 150px;
-    padding-top: max(40%, 150px);
-    background-color: grey;
+    height: auto;
     border-radius: 100%;
     margin: auto;
+}
+
+#profile__details {
+    padding: 0;
 }
 
 #profile__username {
@@ -39,12 +43,12 @@
     #profile__icon {
         width: 150px;
         min-width: unset;
-        padding-top: 150px;
+        height: autol
     }
     
     #profile__details {
         flex-grow: 1;
-        padding: 0 1em 0 2em;
+        padding: 0 1em 0 2.5em;
     }
     
     #profile__username {

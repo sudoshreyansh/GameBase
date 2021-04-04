@@ -2,13 +2,15 @@ function displayProfile() {
     document.getElementById('profile').classList.add('loaded');
 }
 
-function setProfile(username) {
+function setProfile(username, avatar) {
     document.getElementById('profile__username').innerText = `@${username}`;
+    document.getElementById('profile__icon').src = avatar;
     displayProfile();
 }
 
 async function authCallback(userData) {
-    setProfile(userData.username);
+    console.log(userData)
+    setProfile(userData.username, userData.avatar);
     let querySnapshot = await getFromDatabase(gamesCollection);
     let games = [];
     querySnapshot.forEach(snapshot => {
