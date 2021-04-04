@@ -4,7 +4,6 @@ async function authCallback() {
     let snapshot = await getFromDatabase(gamesCollection.doc(gameId));
     
     if ( !snapshot.exists ) {
-        console.log('non exst');
         return;
     }
 
@@ -12,5 +11,4 @@ async function authCallback() {
     document.getElementById('game-title').innerText = gameData.name;
     document.getElementById('game-description').innerText = gameData.description;
     document.getElementById('game-thumbnail').style.backgroundImage = `url(${gameData.icon})`;
-    console.log(snapshot.data())
 }

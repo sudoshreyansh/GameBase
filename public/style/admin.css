@@ -7,16 +7,18 @@ summary {
     cursor: pointer;
 }
 
-summary::-webkit-details-marker {
-    color: transparent;
+summary::marker {
+    font-size: 0;
 }
 
 summary:before {
     content: "+";
+    margin-right: .5em;
 }
 
 details {
     text-align: left;
+    margin-bottom: 2em;
 }
 
 .file-upload-button:before {
@@ -32,7 +34,7 @@ details {
     content: attr(data-filename);
 }
 
-input {
+input[type="text"] {
     margin: .5em 0 1em;
     padding: .5em 1em;
     width: 100%;
@@ -42,16 +44,17 @@ input[type="file"] {
     display: none;
 }
 
-input[type="submit"] {
+input[type="submit"], .button {
     background-color: black;
     color: white;
-    padding: .8em 1em;
-    border: 0;
-    margin-top: 1.5em;
-    display: block;
+    padding: .5em 1em;
+    border: solid 1px black;
+    margin-top: 1em;
+    display: inline-block;
+    cursor: pointer;
 }
 
-#success {
+.success {
     display: none;
     color: green;
     padding: 1em;
@@ -63,13 +66,60 @@ form {
     position: relative;
 }
 
-#loading-wrapper {
+.loading-wrapper {
     background-color: rgba(255, 255, 255, .4);
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
 }
 
-form.loading #loading-wrapper {
+form.loading .loading-wrapper {
     display: flex;
+}
+
+#game-categories-wrapper {
+    display: flex;
+}
+
+#game-categories-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-categories-button {
+    font-weight: bold;
+}
+
+#game-categories {
+    font-size: 1em;
+    padding: .5em 1em;
+}
+
+#game-categories-display {
+    padding-left: .5em;
+}
+
+#game-categories-display span {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#game-categories-display span:not(:last-child):after {
+    content: ', ';
+}
+
+.input-wrapper {
+    margin: .5em 0 1em;
+}
+
+input[type="checkbox"] {
+    margin: 0 .25em 0 .6em;
 }
 
 @media (min-width: 768px) {
@@ -82,7 +132,7 @@ form.loading #loading-wrapper {
         width: 150px;
     }
 
-    #success {
+    .success {
         width: 50%;
     }
 }

@@ -40,7 +40,7 @@ function showSideContent(signState, transition = true) {
         setTimeout(() => mainElement.classList.add(addClass), 400);
     } else {
         mainElement.classList.add(addClass);
-        setTimeout(() => mainElement.classList.remove('no-transition'), 0);
+        setTimeout(() => mainElement.classList.remove('no-transition'), 400);
     }
 }
 
@@ -101,10 +101,10 @@ function getSignState() {
     return signState ? JSON.parse(signState) : false;
 }
 
-function setSignState(signState, username = '') {
+function setSignState(signState, detailsObject = {}) {
     sessionStorage.setItem('signState', JSON.stringify({
         state: signState,
-        username: username
+        ...detailsObject
     }));
 }
 
@@ -116,7 +116,16 @@ async function signUp(signInMethod) {
         }
         return;
     }
-    setSignState(signUpState, username);
+    let chosenAvatar = document.querySelector('.avatar-selector > img.active');
+    if ( !chosenAvatar || !chosenAvatar.src || chosenAvatar.src == '' ) {
+        setErrorText('avatar', 'Please select an avatar');
+    }
+    chosenAvatar = chosenAvatar.src;
+
+    setSignState(signUpState, {
+        username: username,
+        avatar: chosenAvatar
+    });
     signInMethod();
 }
 
@@ -128,6 +137,12 @@ function logIn(signInMethod) {
 async function signUpHandler(result) {
     let signUpDetails = getSignState();
     setSignState(emptyState);
+
+    if ( !result || !result.user || !result.user.uid ) {
+        setErrorText('sign-up', 'Error. Please try again.');
+        signOut();
+        removeLoader();
+    }
 
     let uid = result.user.uid;
     if ( await checkForAccount(uid) ) {
@@ -144,9 +159,16 @@ async function signUpHandler(result) {
         removeLoader();
         return;
     }
+    if ( !signUpDetails.avatar || signUpDetails.avatar == '' ) {
+        setErrorText('avatar', 'Please select an avatar.');
+        signOut();
+        removeLoader();
+        return;
+    }
 
     await usersCollection.doc(uid).set({
         username: signUpDetails.username,
+        avatar: signUpDetails.avatar,
         admin: false
     });
     setLoaderText('Redirecting to dashboard');
@@ -155,6 +177,11 @@ async function signUpHandler(result) {
 
 async function logInHandler(result) {
     setSignState(emptyState);
+    if ( !result || !result.user || !result.user.uid ) {
+        setErrorText('log-in', 'Error. Please try again.');
+        signOut();
+        removeLoader();
+    }
 
     let uid = result.user.uid;
     if ( !(await checkForAccount(uid)) ) {
@@ -177,16 +204,28 @@ function openSideContent() {
             window.addEventListener('load', removeLoader);
         }
         return;
-    }
-
-    if ( signState.state === signUpState ) {
+    } else if ( signState.state === signUpState ) {
         setLoaderText('Signing You Up');
         showSideContent(signUpState, false);
-        document.getElementById('username').value = signState.username;
+        document.getElementById('username').value = signState.username ? signState.username : '';
+
+        let avatarImg = document.querySelector(`.avatar-selector > img[src="${signState.avatar}"]`);
+        if ( avatarImg ) {
+            document.querySelector(`.avatar-selector > img.active`).classList.remove('active');
+            avatarImg.classList.add('active');
+        }
     } else if ( signState.state === logInState ) {
         setLoaderText('Logging In');
         showSideContent(logInState, false);
     }
+}
+
+function changeAvatarSelection(event) {
+    if ( !event.target || event.target.nodeName != 'IMG') {
+        return;
+    }
+    document.querySelectorAll('.avatar-selector > img.active').forEach(element => element.classList.remove('active'));
+    event.target.classList.add('active');
 }
 
 document.querySelectorAll('.sign-up-trigger').forEach(element => {
@@ -209,14 +248,41 @@ document.getElementById('log-in-google').addEventListener('click', () => logIn(g
 document.getElementById('log-in-facebook').addEventListener('click', () => logIn(facebookSignIn));
 
 firebase.auth().getRedirectResult().then(result => {
-    let signState = getSignState();
-    openSideContent();
-    if ( signState.state === signUpState ) {
-        signUpHandler(result);
-    } else if ( signState.state === logInState ) {
-        logInHandler(result);
+    try {
+        let signState = getSignState();
+        openSideContent();
+        if ( signState.state === signUpState ) {
+            signUpHandler(result);
+        } else if ( signState.state === logInState ) {
+            logInHandler(result);
+        }
+    } catch ( error ) {
+        setLoaderText('Unexpected error. Please try again....');
+        setSignState(emptyState);
+        signOut();
+        setTimeout(() => window.location.reload(), 1000);
+    }
+}, error => {
+    if ( error.code === 'auth/timeout' ) {
+        try {
+            let signState = getSignState();
+            openSideContent();
+            if ( signState.state === signUpState ) {
+                setErrorText('sign-up', 'Timed out. Please try again.');
+            } else if ( signState.state === logInState ) {
+                setErrorText('log-in', 'Timed out. Please try again.');
+            }
+            signOut();
+            removeLoader();
+        } catch ( error ) {
+            setLoaderText('Unexpected error. Please try again....');
+            setSignState(emptyState);
+            signOut();
+            setTimeout(() => window.location.reload(), 1000);
+        }
     }
 });
 
+document.querySelector('.avatar-selector').addEventListener('click', changeAvatarSelection);
 document.getElementById('username').addEventListener('keyup', debounce(validateUsernameFromField, 500));
 document.getElementById('username').addEventListener('change', validateUsernameFromField);

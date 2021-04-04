@@ -44,17 +44,64 @@
             <div class="divider-small"></div>
             <details>
                 <summary>Add New Game</summary>
-                <div id="success">Successfully added.</div>
-                <form action="">
+                <div class="success">Successfully added.</div>
+                <form action="" id="game-form">
                     <label for="game-name">Name:</label><br>
                     <input type="text" id="game-name" autocomplete="off" required><br>
+
+                    <label for="game-developer">Game Developer:</label><br>
+                    <input type="text" id="game-developer" required><br>
+
                     <label for="game-description">Description:</label><br>
                     <input type="text" id="game-description" required><br>
-                    <label for="icon">Game Icon:</label>
-                    <label for="icon-upload" class="file-upload-button" data-filename="No file chosen"></label>
-                    <input type="file" id="icon-upload" accept=".jpg, .jpeg, .png" required>
+
+                    <label for="game-url">URL:</label><br>
+                    <input type="text" id="game-url" required><br>
+                    
+                    <div class="input-wrapper">
+                        <label for="icon">Game Icon:</label>
+                        <label for="icon-upload" class="file-upload-button" data-filename="No file chosen"></label>
+                        <input type="file" id="icon-upload" accept=".jpg, .jpeg, .png" required>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="game-devices">Devices:</label>
+                        <input type="checkbox" id="game-device-pc" value="pc"> <label for="game-device-pc">PC</label>
+                        <input type="checkbox" id="game-device-touch" value="touch"> <label for="game-device-touch">Touch</label>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <div id="game-categories-wrapper">
+                            <label for="game-categories">Categories: </label>
+                            <div id="game-categories-display">
+                            </div>
+                        </div>
+                        <select id="game-categories" value="">
+                        </select>
+                        <span class="button" id="add-game-categories">
+                            Add Category
+                        </span>
+                    </div>
                     <input type="submit" value="Add Game">
-                    <div id="loading-wrapper">
+                    <div class="loading-wrapper">
+                        <div class="loader-wrapper">
+                            <div class="loader--first"></div>
+                            <div class="loader--second"></div>
+                            <div class="loader--third"></div>
+                        </div>
+                        <div class="divider-small"></div>
+                        <p></p>
+                    </div>
+                </form>
+            </details>
+            <details>
+                <summary>Add New Category</summary>
+                <div class="success">Successfully added.</div>
+                <form action="" id="category-form">
+                    <label for="category-name">Name:</label><br>
+                    <input type="text" id="category-name" autocomplete="off" required><br>
+                    <input type="submit" value="Add Category">
+                    <div class="loading-wrapper">
                         <div class="loader-wrapper">
                             <div class="loader--first"></div>
                             <div class="loader--second"></div>

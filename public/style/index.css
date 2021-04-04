@@ -209,6 +209,29 @@ input {
     display: inline-block;
 }
 
+.avatar-selector {
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;;
+}
+
+.avatar-selector > img {
+    display: block;
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: solid 5px transparent;
+    cursor: pointer;
+}
+
+.avatar-selector > img.active {
+    border-color: #1a77f2;
+}
 
 @media (min-width: 768px) {
     #games-background {

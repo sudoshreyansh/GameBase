@@ -2,6 +2,7 @@ var database = firebase.firestore();
 var storage = firebase.storage();
 var usersCollection = database.collection('users');
 var gamesCollection = database.collection('games');
+var categoriesCollection = database.collection('categories');
 
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
@@ -81,6 +82,15 @@ function getFromDatabase(reference) {
 async function getUserDetails(uid) {
   let documentSnapshot = await getFromDatabase(usersCollection.doc(uid));
    return documentSnapshot.data();
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
 }
 
 document.getElementById('logout').addEventListener('click', function(event) {
