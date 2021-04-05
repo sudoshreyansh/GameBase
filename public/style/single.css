@@ -15,21 +15,63 @@
     margin-bottom: .4em;
 }
 
+#game-meta {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: .4em;
+    text-align: left;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#game-developer {
+    margin-right: 1.5em;
+}
+
 #game-title, #game-description {
     text-align: left;
 }
 
+#content-wrapper {
+    padding-top: 1em;
+    clear: both;
+    width: 80%;
+}
+
 #game-iframe-wrapper {
     width: 100%;
-    height: 50%;
-    clear: both;
-    padding-top: 1em;
+    padding-top: 56.3%;
+    position: relative;
 }
 
 #game-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: grey;
+}
+
+#game-play-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -44,6 +86,6 @@
     #game-title {
         font-weight: 600;
         font-size: 1.8em;
-        margin-bottom: .4em;
+        margin-bottom: .2em;
     }
 }

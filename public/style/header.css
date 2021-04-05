@@ -113,12 +113,28 @@ header.sticky {
     visibility: visible;
 }
 
-#logout, #admin {
+li.logged-in-only, li.admin-only {
     display: none;
 }
 
-.logged-in #logout, .logged-in.admin #admin {
+.logged-in li.logged-in-only, .logged-in.admin li.admin-only {
     display: block;
+}
+
+header #device {
+    color: white;
+    background-color: black;
+    padding: .5em;
+    border-radius: 5px;
+}
+
+header #avatar {
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+header #avatar > img {
+    width: 35px;
 }
 
 @media (min-width: 768px) {

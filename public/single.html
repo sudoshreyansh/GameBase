@@ -28,11 +28,19 @@
                 <li>
                     <a href="/browse">Games</a>
                 </li>
-                <li>
+                <li class="admin-only">
                     <a href="/admin" id="admin">Admin</a>
                 </li>
-                <li>
+                <li class="logged-in-only">
                     <a href="/" id="logout">Logout</a>
+                </li>
+                <li class="logged-in-only">
+                    <a href="/" id="device"></a>
+                </li>
+                <li class="logged-in-only">
+                    <a href="/dashboard" id="avatar">
+                        <img src="" alt="">
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -42,9 +50,19 @@
         <div class="wrapper">
             <div id="game-thumbnail"></div>
             <div id="game-title"></div>
+            <div id="game-meta">
+                <div id="game-developer"></div>
+                <div id="game-devices"></div>
+            </div>
             <div id="game-description"></div>
-            <div id="game-iframe-wrapper">
-                <div id="game-iframe">
+            <div id="content-wrapper">
+                <div id="game-iframe-wrapper">
+                    <iframe id="game-iframe" src="" frameborder="0" allowfullscreen=""></iframe>
+                    <div id="game-play-wrapper">
+                        <div id="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

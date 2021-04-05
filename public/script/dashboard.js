@@ -9,7 +9,6 @@ function setProfile(username, avatar) {
 }
 
 async function authCallback(userData) {
-    console.log(userData)
     setProfile(userData.username, userData.avatar);
     let querySnapshot = await getFromDatabase(gamesCollection);
     let games = [];

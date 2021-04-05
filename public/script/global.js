@@ -3,6 +3,7 @@ var storage = firebase.storage();
 var usersCollection = database.collection('users');
 var gamesCollection = database.collection('games');
 var categoriesCollection = database.collection('categories');
+var currentDevice = "ontouchstart" in document.documentElement ? 'Touch' : 'PC'
 
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
@@ -93,6 +94,16 @@ function escapeHtml(unsafe) {
        .replace(/'/g, "&#039;");
 }
 
+function changeDevice(event) {
+  event.preventDefault();
+  if ( currentDevice === 'PC' ) {
+    currentDevice = 'Touch';
+  } else {
+    currentDevice = 'PC';
+  }
+  document.querySelector('header #device').innerText = currentDevice;
+}
+
 document.getElementById('logout').addEventListener('click', function(event) {
   event.preventDefault();
   firebase.auth().signOut();
@@ -109,6 +120,8 @@ firebase.auth().onAuthStateChanged(async user => {
     
     if ( userData ) {
       document.querySelector('body').classList.add('logged-in');
+      document.querySelector('header #avatar > img').src = userData.avatar;
+      document.querySelector('header #device').innerText = currentDevice;
 
       if ( userData.admin ) {
         document.querySelector('body').classList.add('admin');
@@ -130,3 +143,5 @@ firebase.auth().onAuthStateChanged(async user => {
     window.location.assign('/');
   }
 });
+
+document.querySelector('header #device').addEventListener('click', changeDevice);
