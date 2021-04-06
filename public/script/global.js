@@ -3,7 +3,8 @@ var storage = firebase.storage();
 var usersCollection = database.collection('users');
 var gamesCollection = database.collection('games');
 var categoriesCollection = database.collection('categories');
-var currentDevice = "ontouchstart" in document.documentElement ? 'Touch' : 'PC'
+var currentDevice = sessionStorage.getItem('device');
+currentDevice = currentDevice ? currentDevice : ("ontouchstart" in document.documentElement ? 'Touch' : 'PC');
 
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
@@ -101,6 +102,7 @@ function changeDevice(event) {
   } else {
     currentDevice = 'PC';
   }
+  sessionStorage.setItem('device', currentDevice);
   document.querySelector('header #device').innerText = currentDevice;
 }
 
