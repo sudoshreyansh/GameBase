@@ -169,6 +169,7 @@ async function signUpHandler(result) {
     await usersCollection.doc(uid).set({
         username: signUpDetails.username,
         avatar: signUpDetails.avatar,
+        playedTime: 0,
         admin: false
     });
     setLoaderText('Redirecting to dashboard');

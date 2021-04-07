@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Browse Games</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/global.css">
@@ -13,7 +13,7 @@
 <body>
     <header class="sticky">
         <div class="header-title">
-            GameBase
+            <a href="/">GameBase</a>
         </div>
         <div class="hamburger mobile-only">
             <div class="hamburger--line"></div>
@@ -50,6 +50,21 @@
         <div id="search-wrapper" class="wrapper">
             <input type="search" name="" id="search-input" placeholder="Type here to search">
             <button id="search-button">Search</button>
+            <button id="filter-button">
+                <i class="fas fa-sliders-h"></i>
+            </button>
+        </div>
+        <div class="wrapper" id="filters-wrapper">
+            <div id="devices" class="filter">
+                <label for="game-devices">Devices:</label>
+                <input type="checkbox" id="game-device-pc" value="pc"> <label for="game-device-pc">PC</label>
+                <input type="checkbox" id="game-device-touch" value="touch"> <label for="game-device-touch">Touch</label>
+            </div>
+            <div id="categories" class="filter">
+                <label for="game-categories">Categories: </label>
+                <select id="game-categories" value="">
+                </select>
+            </div>
         </div>
         <div id="search-results" class="wrapper">
             <div class="games-slider grid">
@@ -61,65 +76,17 @@
         </div>
         <div class="wrapper" id="recommendations-wrapper">
             <h3>Top Games</h3>
-            <div class="games-slider">
+            <div class="games-slider" id="top-games">
                 <button class="games-slider__button games-slider__button-left"><i class="fas fa-angle-left"></i></button>
                 <button class="games-slider__button games-slider__button-right"><i class="fas fa-angle-right"></i></button>
                 <ul class="games-slider__cards">
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
                 </ul>
             </div>
-            <h3>Trending Games</h3>
-            <div class="games-slider">
+            <h3>Latest Games</h3>
+            <div class="games-slider" id="latest-games">
                 <button class="games-slider__button games-slider__button-left"><i class="fas fa-angle-left"></i></button>
                 <button class="games-slider__button games-slider__button-right"><i class="fas fa-angle-right"></i></button>
                 <ul class="games-slider__cards">
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
-                    <li class="games-slider__card">
-                        <div class="games-card__image"></div>
-                        <div class="games-card__title">
-                            Game #1
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>

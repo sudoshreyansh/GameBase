@@ -6,6 +6,10 @@ function removeSuccess(form) {
     form.querySelector('.success').style.display = "none";
 }
 
+function setErrorText(fieldName, errorText) {
+    document.getElementById(`${fieldName}-error-text`).innerText = errorText;
+}
+
 function addGameToDb(gameObject) {
     return new Promise((resolve, reject) => {
         gamesCollection.add(gameObject).then(ref => resolve(ref));
@@ -36,13 +40,17 @@ function resetForm(form) {
     });
     appliedCategories = [];
     document.querySelector('#game-categories').innerHTML = generateOptions();
-    document.querySelector('game-categories-display').innerHTML = '';
+    document.querySelector('#game-categories-display').innerHTML = '';
     document.querySelector('#game-categories').value = '';
     updateFileName();
 }
 
 function uploadImage() {
     return new Promise((resolve, reject) => {
+        if ( document.getElementById('icon-upload').files.length == 0 ) {
+            setErrorText('icon', 'Please upload an icon');
+            reject();
+        }
         let file = document.getElementById('icon-upload').files[0];
         let fileNameArray = file.name.split('.');
         let fileExtension = fileNameArray[fileNameArray.length - 1];
@@ -59,30 +67,55 @@ function uploadImage() {
 async function addGame(event) {
     event.preventDefault();
     removeSuccess(this.parentElement);
+    setErrorText('add-game', '');
+    setErrorText('icon', '');
+    setErrorText('categories', '');
+    setErrorText('devices', '');
     displayFormLoader(this);
 
-    let iconUrl = await uploadImage();
-    let gameName = document.getElementById('game-name').value;
-    let gameDeveloper = document.getElementById('game-developer').value;
-    let gameDescription = document.getElementById('game-description').value;
-    let gameUrl = document.getElementById('game-url').value;
-    let gameDevices = [];
-    document.getElementById('game-device-pc').checked ? gameDevices.push('pc') : 1;
-    document.getElementById('game-device-touch').checked ? gameDevices.push('touch') : 1;
+    try {
+        let iconUrl = await uploadImage();
+        let gameName = document.getElementById('game-name').value;
+        let gameDeveloper = document.getElementById('game-developer').value;
+        let gameDescription = document.getElementById('game-description').value;
+        let gameUrl = document.getElementById('game-url').value;
+        let gameDevices = [];
+        document.getElementById('game-device-pc').checked ? gameDevices.push('pc') : 1;
+        document.getElementById('game-device-touch').checked ? gameDevices.push('touch') : 1;
 
-    await addGameToDb({
-        name: gameName,
-        developer: gameDeveloper,
-        description: gameDescription,
-        icon: iconUrl,
-        url: gameUrl,
-        devices: gameDevices,
-        categories: appliedCategories,
-    });
+        if ( gameDevices.length == 0 ) {
+            setErrorText('devices', 'Please choose at least 1 device');
+            throw 'error';
+        } 
 
-    showSuccess(this.parentElement);
-    removeFormLoader(this);
-    resetForm(this);
+        if ( appliedCategories.length >= 5 ) {
+            setErrorText('categories', 'Maximum 5 categories are allowed.');
+            throw 'error';   
+        }
+
+        await addGameToDb({
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            name: gameName,
+            developer: gameDeveloper,
+            description: gameDescription,
+            icon: iconUrl,
+            url: gameUrl,
+            devices: gameDevices,
+            categories: appliedCategories,
+            searchHelper: appliedCategories.concat(gameName.split(' ').map(subname => subname.toLowerCase())),
+            pcSupported: gameDevices.includes('pc'),
+            touchSupported: gameDevices.includes('touch'),
+            playedTime: 0
+        });
+
+        showSuccess(this.parentElement);
+        removeFormLoader(this);
+        resetForm(this);
+    } catch (error) {
+        setErrorText('add-game', 'An error occured');
+        console.log(error);
+        removeFormLoader(this);
+    }
 }
 
 async function addCategory(event) {
@@ -93,7 +126,7 @@ async function addCategory(event) {
     let categoryName = document.getElementById('category-name').value;
 
     await addCategoryToDb({
-        name: categoryName
+        name: categoryName.toLowerCase()
     });
 
     showSuccess(this.parentElement);
@@ -123,6 +156,10 @@ function addCategoryToGame() {
     document.querySelector('#game-categories-display').appendChild(spanElement);
 
     document.querySelector(`#game-categories > option[value="${categoryId}"]`).remove();
+    if ( appliedCategories.length >= 5 ) {
+        setErrorText('categories', 'Maximum 5 categories are allowed');
+        return;
+    }
     appliedCategories.push(categoryId);
 }
 

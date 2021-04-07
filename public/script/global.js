@@ -5,6 +5,7 @@ var gamesCollection = database.collection('games');
 var categoriesCollection = database.collection('categories');
 var currentDevice = sessionStorage.getItem('device');
 currentDevice = currentDevice ? currentDevice : ("ontouchstart" in document.documentElement ? 'Touch' : 'PC');
+var currentUserData = null;
 
 document.querySelector(".hamburger").addEventListener("click", function () {
   this.parentElement.classList.toggle("nav-opened");
@@ -119,11 +120,15 @@ document.getElementById('logout').addEventListener('click', function(event) {
 firebase.auth().onAuthStateChanged(async user => {
   if ( user ) {
     let userData = await getUserDetails(user.uid);
-    
+
     if ( userData ) {
       document.querySelector('body').classList.add('logged-in');
       document.querySelector('header #avatar > img').src = userData.avatar;
       document.querySelector('header #device').innerText = currentDevice;
+      userData.id = user.uid;
+      currentUserData = {
+        ...userData
+      };
 
       if ( userData.admin ) {
         document.querySelector('body').classList.add('admin');

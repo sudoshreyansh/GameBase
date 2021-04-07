@@ -34,7 +34,7 @@ details {
     content: attr(data-filename);
 }
 
-input[type="text"] {
+input[type="text"], input[type="url"] {
     margin: .5em 0 1em;
     padding: .5em 1em;
     width: 100%;
@@ -60,6 +60,10 @@ input[type="submit"], .button {
     padding: 1em;
     border: solid 1px green;
     margin-bottom: 1em;
+}
+
+.error-text {
+    color: red;
 }
 
 form {

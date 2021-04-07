@@ -13,7 +13,7 @@
 <body class="logged-in-only admin-only">
     <header class="sticky">
         <div class="header-title">
-            GameBase
+            <a href="/">GameBase</a>
         </div>
         <div class="hamburger mobile-only">
             <div class="hamburger--line"></div>
@@ -53,6 +53,7 @@
             <details>
                 <summary>Add New Game</summary>
                 <div class="success">Successfully added.</div>
+                <div id="add-game-error-text" class="error-text"></div>
                 <form action="" id="game-form">
                     <label for="game-name">Name:</label><br>
                     <input type="text" id="game-name" autocomplete="off" required><br>
@@ -64,18 +65,20 @@
                     <input type="text" id="game-description" required><br>
 
                     <label for="game-url">URL:</label><br>
-                    <input type="text" id="game-url" required><br>
-                    
+                    <input type="url" id="game-url" required><br>
+
                     <div class="input-wrapper">
                         <label for="icon">Game Icon:</label>
                         <label for="icon-upload" class="file-upload-button" data-filename="No file chosen"></label>
-                        <input type="file" id="icon-upload" accept=".jpg, .jpeg, .png" required>
+                        <input type="file" id="icon-upload" accept=".jpg, .jpeg, .png"><br>
+                        <div id="icon-error-text" class="error-text"></div>
                     </div>
 
                     <div class="input-wrapper">
                         <label for="game-devices">Devices:</label>
                         <input type="checkbox" id="game-device-pc" value="pc"> <label for="game-device-pc">PC</label>
                         <input type="checkbox" id="game-device-touch" value="touch"> <label for="game-device-touch">Touch</label>
+                        <div id="devices-error-text" class="error-text"></div>
                     </div>
 
                     <div class="input-wrapper">
@@ -89,6 +92,7 @@
                         <span class="button" id="add-game-categories">
                             Add Category
                         </span>
+                        <div id="categories-error-text" class="error-text"></div>
                     </div>
                     <input type="submit" value="Add Game">
                     <div class="loading-wrapper">

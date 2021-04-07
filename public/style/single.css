@@ -35,12 +35,45 @@
 #content-wrapper {
     padding-top: 1em;
     clear: both;
-    width: 80%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#related-games-wrapper {
+    width: 100%;
+    padding: 2em 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#related-games-wrapper > h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+}
+
+.related-game {
+    flex-grow: 1;
+    margin: 1em;
+    flex-basis: 0;
+    min-width: 100px;
+}
+
+.related-game > div {
+    width: 100%;
+    padding-top: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #game-iframe-wrapper {
     width: 100%;
-    padding-top: 56.3%;
+    padding-top: 70.375%;
     position: relative;
 }
 
@@ -63,15 +96,48 @@
     background-color: rgba(0,0,0,0.8);
 }
 
-#play-button {
+#game-play-wrapper.playing {
+    display: none;
+}
+
+#game-play-wrapper > div {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4em;
     color: white;
     text-align: center;
+    display: none;
+}
+
+#game-play-wrapper.compatible #play-button {
+    display: block;
+}
+
+#game-play-wrapper.incompatible #incompatible-text {
+    display: block;
+}
+
+#play-button {
+    font-size: 4em;
     cursor: pointer;
+}
+
+#fullscreen {
+    background-color: black;
+    color: white;
+    position: absolute;
+    font-size: 1.4em;
+    right: 20px;
+    top: 20px;
+    display: none;
+    border-radius: 20px;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.playing #fullscreen {
+    display: block;
 }
 
 @media (min-width: 768px) {
@@ -87,5 +153,35 @@
         font-weight: 600;
         font-size: 1.8em;
         margin-bottom: .2em;
+    }
+
+    #content-wrapper {
+        flex-flow: row nowrap;
+    }
+    
+    #related-games-wrapper {
+        width: 20%;
+        padding: 0 1em;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    #related-games-wrapper > h1 {
+        text-align: center;
+    }
+    
+    .related-game {
+        width: 80%;
+        margin: .5em auto;
+    }
+
+    .related-game:last-child {
+        display: none;
+    }
+
+    #game-iframe-wrapper {
+        width: 80%;
+        padding-top: 56.3%;
     }
 }

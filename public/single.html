@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Game</title>
+    <title></title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style/global.css">
@@ -13,7 +13,7 @@
 <body class="logged-in-only">
     <header class="sticky">
         <div class="header-title">
-            GameBase
+            <a href="/">GameBase</a>
         </div>
         <div class="hamburger mobile-only">
             <div class="hamburger--line"></div>
@@ -56,13 +56,22 @@
             </div>
             <div id="game-description"></div>
             <div id="content-wrapper">
-                <div id="game-iframe-wrapper">
-                    <iframe id="game-iframe" src="" frameborder="0" allowfullscreen=""></iframe>
+                <div id="game-iframe-wrapper" class="">
+                    <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
                     <div id="game-play-wrapper">
                         <div id="play-button">
                             <i class="fas fa-play"></i>
                         </div>
+                        <div id="incompatible-text">
+                            Your device is incomapitable with the game. You can change the device from the menu and refresh to play the game.
+                        </div>
                     </div>
+                    <div id="fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div id="related-games-wrapper">
+                    
                 </div>
             </div>
         </div>
