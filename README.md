@@ -3,6 +3,8 @@
 GameBase, a in-browser gaming website project for WoC 3.0. <br>
 Hosted Project: [https://gamebase-94ec7.web.app/](https://gamebase-94ec7.web.app/)
 
+Apart from a normal gaming website, it also has some additional features.
+
 ## Features
 * **OAuth based login:** Instead of the traditional username and password login system, this application implements OAuth based signup and login which makes it really easy, quick and hassle-free to login to the website
 * **Device Specific Games:** The admin panel lets you choose the device on which the game is available and displays games based on the device the user is using. The users can change their device from the nav menu if incorrectly detected.
